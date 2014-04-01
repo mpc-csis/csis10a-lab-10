@@ -25,10 +25,8 @@ import java.awt.Color;
  * This class runs a world that contains box bugs. <br />
  * This class is not tested on the AP CS A and AB exams.
  */
-public class BoxBugRunner
-{
-    public static void main(String[] args)
-    {
+public class BoxBugRunner {
+    public static void main(String[] args) {
         ActorWorld world = new ActorWorld();
         BoxBug alice = new BoxBug(6);
         alice.setColor(Color.ORANGE);

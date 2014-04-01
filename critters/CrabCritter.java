@@ -29,10 +29,8 @@ import java.util.ArrayList;
  * <br />
  * This class is not tested on the AP CS A and AB exams.
  */
-public class CrabCritter extends Critter
-{
-    public CrabCritter()
-    {
+public class CrabCritter extends Critter {
+    public CrabCritter() {
         setColor(Color.RED);
     }
 
@@ -41,13 +39,11 @@ public class CrabCritter extends Critter
      * front-right and to its front-left
      * @return a list of actors occupying these locations
      */
-    public ArrayList<Actor> getActors()
-    {
+    public ArrayList<Actor> getActors() {
         ArrayList<Actor> actors = new ArrayList<Actor>();
         int[] dirs =
             { Location.AHEAD, Location.HALF_LEFT, Location.HALF_RIGHT };
-        for (Location loc : getLocationsInDirections(dirs))
-        {
+        for (Location loc : getLocationsInDirections(dirs)) {
             Actor a = getGrid().get(loc);
             if (a != null)
                 actors.add(a);
@@ -59,8 +55,7 @@ public class CrabCritter extends Critter
     /**
      * @return list of empty locations immediately to the right and to the left
      */
-    public ArrayList<Location> getMoveLocations()
-    {
+    public ArrayList<Location> getMoveLocations() {
         ArrayList<Location> locs = new ArrayList<Location>();
         int[] dirs =
             { Location.LEFT, Location.RIGHT };
@@ -74,10 +69,8 @@ public class CrabCritter extends Critter
     /**
      * If the crab critter doesn't move, it randomly turns left or right.
      */
-    public void makeMove(Location loc)
-    {
-        if (loc.equals(getLocation()))
-        {
+    public void makeMove(Location loc) {
+        if (loc.equals(getLocation())) {
             double r = Math.random();
             int angle;
             if (r < 0.5)
@@ -86,8 +79,9 @@ public class CrabCritter extends Critter
                 angle = Location.RIGHT;
             setDirection(getDirection() + angle);
         }
-        else
+        else {
             super.makeMove(loc);
+        }
     }
     
     /**
@@ -98,14 +92,12 @@ public class CrabCritter extends Critter
      * @return a set of valid locations that are neighbors of the current
      * location in the given directions
      */
-    public ArrayList<Location> getLocationsInDirections(int[] directions)
-    {
+    public ArrayList<Location> getLocationsInDirections(int[] directions) {
         ArrayList<Location> locs = new ArrayList<Location>();
         Grid gr = getGrid();
         Location loc = getLocation();
     
-        for (int d : directions)
-        {
+        for (int d : directions) {
             Location neighborLoc = loc.getAdjacentLocation(getDirection() + d);
             if (gr.isValid(neighborLoc))
                 locs.add(neighborLoc);
